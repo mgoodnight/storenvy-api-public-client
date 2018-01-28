@@ -6,7 +6,7 @@ use strict;
 use warnings;
 
 use Moo;
-use Furl;
+use LWP::UserAgent;
 use IO::Socket::SSL;
 use URI::Escape;
 
@@ -20,10 +20,11 @@ has api_url => ( is => 'lazy' );
 has ua => (
     is      => 'ro',
     builder => sub {
-        return Furl->new(
+        return LWP::UserAgent->new(
+            agent => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
             timeout  => 300,
             ssl_opts => {
-                SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_PEER(),
+                verify_hostname => 1
             }
         );
     }
