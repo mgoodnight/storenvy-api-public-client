@@ -3,7 +3,7 @@
 use strict; use warnings;
 
 use Test::Most;
-use Furl;
+use LWP::UserAgent;
 use FindBin qw/$Bin/;
 use lib "$Bin/../lib";
 use Storenvy::API::Public::Client;
