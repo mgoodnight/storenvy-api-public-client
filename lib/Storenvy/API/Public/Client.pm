@@ -7,7 +7,6 @@ use warnings;
 
 use Moo;
 use LWP::UserAgent;
-use IO::Socket::SSL;
 use URI::Escape;
 
 has sub_domain => (
