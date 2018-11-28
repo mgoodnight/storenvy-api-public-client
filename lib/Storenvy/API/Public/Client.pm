@@ -6,7 +6,8 @@ use strict;
 use warnings;
 
 use Moo;
-use LWP::UserAgent;
+use Furl;
+use IO::Socket::SSL;
 use URI::Escape;
 
 has sub_domain => (
@@ -19,11 +20,10 @@ has api_url => ( is => 'lazy' );
 has ua => (
     is      => 'ro',
     builder => sub {
-        return LWP::UserAgent->new(
-            agent => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
+        return Furl->new(
             timeout  => 300,
             ssl_opts => {
-                verify_hostname => 1
+                SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_PEER()
             }
         );
     }
