@@ -23,21 +23,21 @@ SKIP: {
     ok($client->last_query_response->code == 200, "Our response code is OK");
     ok(decode_json($items_json), "Successfully decoded our expected JSON content");
 
-	SKIP: {
-		$items_json = decode_json($items_json);
-		skip "No items available to test with, so we are skipping...", 2 unless (scalar(@{$items_json}));
+    SKIP: {
+        $items_json = decode_json($items_json);
+        skip "No items available to test with, so we are skipping...", 2 unless (scalar(@{$items_json}));
 
-		my $item_json = $client->get_product($items_json->[0]->{id});
-    	ok($client->last_query_response->code == 200, "Our response code is OK");
-    	ok(decode_json($item_json), "Successfully decoded our expected JSON content");
-	}
+        my $item_json = $client->get_product($items_json->[0]->{id});
+        ok($client->last_query_response->code == 200, "Our response code is OK");
+        ok(decode_json($item_json), "Successfully decoded our expected JSON content");
+    }
 
-	my $collections_json = $client->get_store_collections({ page => 1, per_page => 1});
+    my $collections_json = $client->get_store_collections({ page => 1, per_page => 1});
     ok($client->last_query_response->code == 200, "Our response code is OK");
     ok(decode_json($collections_json), "Successfully decoded our expected JSON content");
 
-	SKIP: {
-		$collections_json = decode_json($collections_json);
+    SKIP: {
+        $collections_json = decode_json($collections_json);
         skip "No collections available to test with, so we are skipping...", 2 unless (scalar(@{$collections_json->{collections}}));
 
         my $collection_json = $client->get_collection($collections_json->{collections}->[0]->{id});
