@@ -53,22 +53,22 @@ sub get_store_products {
 
 sub get_product {
     my ($self, $product_id) = @_;
-	my $url = sprintf "%s/products/%d.json", $self->api_url, $product_id;
-	
-	return $self->_query($url);
+    my $url = sprintf "%s/products/%d.json", $self->api_url, $product_id;
+    
+    return $self->_query($url);
 }
 
 sub get_store_collections {
     my ($self, $args) = @_;
-	my $url = sprintf "%s/collections.json", $self->api_url;
+    my $url = sprintf "%s/collections.json", $self->api_url;
 
-	return $self->_query($url, $args);
+    return $self->_query($url, $args);
 }
 
 sub get_collection {
-	my ($self, $collection_id) = @_;
-	my $url = sprintf "%s/collections/%d.json", $self->api_url, $collection_id;
-	
+    my ($self, $collection_id) = @_;
+    my $url = sprintf "%s/collections/%d.json", $self->api_url, $collection_id;
+    
     return $self->_query($url);
 }
 
@@ -78,8 +78,8 @@ sub _query {
     if (keys %$params) {
         $url .= '?';
         $url .= join('&', map {
-			"$_=" . URI::Escape::uri_escape_utf8($params->{$_})
-		} sort keys %$params);
+            "$_=" . URI::Escape::uri_escape_utf8($params->{$_})
+        } sort keys %$params);
     }
 
     my $response = $self->ua->get($url);
