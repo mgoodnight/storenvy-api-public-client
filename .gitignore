@@ -1,3 +1,30 @@
+Storenvy-API-Public-Client-*
+
+# Project Defaults
+*.env
+.cpanm
+local/
+log/
+logs/
+sessions/
+*.sql
+*.log
+*.db
+*.bak
+# Linux: https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
+!.gitkeep
+!.gitignore
+*~
+
+# Vim: https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+Session.vim
+.netrwhist
+*~
+tags
+
+# Perl: https://github.com/github/gitignore/blob/master/Perl.gitignore
 /blib/
 /.build/
 _build/
@@ -17,6 +44,27 @@ nytprof.out
 /pm_to_blib
 *.o
 *.bs
-/_eumm/
-/local
-Storenvy-API-Public-Client-*
+/_eumm/#
+
+# Archives: https://github.com/github/gitignore/blob/master/Global/Archives.gitignore
+*.7z
+*.jar
+*.rar
+*.zip
+*.gz
+*.bzip
+*.bz2
+*.xz
+*.lzma
+*.cab
+*.iso
+*.tar
+*.dmg
+*.xpi
+*.gem
+*.egg
+*.deb
+*.rpm
+*.msi
+*.msm
+*.msp

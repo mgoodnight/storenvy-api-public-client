@@ -7,7 +7,7 @@ use warnings;
 
 use Moo;
 use Furl;
-use IO::Socket::SSL;
+use IO::Socket::SSL qw/SSL_VERIFY_PEER/;
 use URI::Escape;
 
 has sub_domain => (
@@ -23,7 +23,7 @@ has ua => (
         return Furl->new(
             timeout  => 300,
             ssl_opts => {
-                SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_PEER()
+                SSL_verify_mode => SSL_VERIFY_PEER()
             }
         );
     }
