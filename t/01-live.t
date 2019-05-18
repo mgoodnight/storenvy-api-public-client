@@ -10,9 +10,8 @@ use Storenvy::API::Public::Client;
 use JSON qw/decode_json/;
 
 my $sub_domain = $ENV{STORENVY_SUBDOMAIN};
-my $test_live = $ENV{TEST_LIVE};
 SKIP: {
-    skip "Missing test live environment variable, so we are skipping...", 4 unless ($test_live);
+    skip "Missing Storenvy subdomain environment variable, so we are skipping...", 4 unless ($sub_domain);
     my $client = Storenvy::API::Public::Client->new(sub_domain => $sub_domain);
 
     my $details_json = $client->get_store_info;
